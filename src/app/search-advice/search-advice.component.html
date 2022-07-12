@@ -1,0 +1,33 @@
+<div class="advice-container">
+  <h2 class="page-title">Search for advice</h2>
+
+  <div class="search-input-container">
+    <input type="text" #adviceSearchInput class="search-query" onblur="this.value=''" placeholder="Enter a search term" />
+  </div>
+
+  <div class="search-results-container">
+    <div class="search-results-searching indicator" role="status" *ngIf="isSearching">
+      <span class="status-content">Searching ... </span>
+    </div>
+
+    <ng-container *ngIf="searchResult.message">
+      <div class="search-results-message">
+      <p class="message__error-message">{{searchResult.message.text}}</p>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="searchResult.total_results">
+      <div class="search-results">
+        <div class="search-results-meta">
+          <p>{{searchResult.total_results}} results found for "<span>{{searchResult.query}}</span>"</p>
+        </div>
+        <div class="search-results-items">
+        <div class="advice-item search-result-item" *ngFor="let data of searchResult.slips">
+          <p class="advice-item_advice">{{data.advice}}</p>
+          <p class="advice-item_pub-date">Publish Date: {{data.date | date}} </p>
+        </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

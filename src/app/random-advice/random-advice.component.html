@@ -1,0 +1,15 @@
+<div class="advice-container">
+<h2 class="page-title">Random Advice</h2>
+
+<div class="random-result__container">
+  <div id="loading" class="indicator" role="status" >
+    <span class="status-content">Loading...</span>
+  </div>
+
+  <div class="advice-item random-result-item">
+    <p class="advice-item_advice" *ngIf="randAdvice.slip.advice">{{randAdvice.slip.advice}}</p>
+  </div>
+</div>
+<button class="get-new-advice" type="button" (click)="newRandomAdvice($event)">Get Another</button>
+
+</div>
